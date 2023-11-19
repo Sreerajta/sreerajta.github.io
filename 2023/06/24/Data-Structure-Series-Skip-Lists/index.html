@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://sreerajta.github.io/images/linked_list.png">
 <meta property="og:image" content="http://sreerajta.github.io/images/skip_list.png">
 <meta property="article:published_time" content="2023-06-24T14:58:22.000Z">
-<meta property="article:modified_time" content="2023-11-19T18:14:37.069Z">
+<meta property="article:modified_time" content="2023-11-19T18:26:09.419Z">
 <meta property="article:author" content="Sreeraj T A">
 <meta property="article:tag" content="data structures, skip lists, interview preparation">
 <meta name="twitter:card" content="summary">
@@ -114,7 +114,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linked-Lists"><span class="toc-number">1.</span> <span class="toc-text">Linked Lists</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linked-Lists"><span class="toc-number">1.</span> <span class="toc-text">Linked Lists</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Skip-Lists"><span class="toc-number">2.</span> <span class="toc-text">Skip Lists</span></a></li></ol>
       </div>
     
   </span>
@@ -183,7 +183,7 @@
 </ul>
 <p>Consider the linked list :<br>List: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null</p>
 <p>To traverse through the list first you need to access the element at the first position , then by looking at the next pointer in the first element you can reach the second element and go on till the next of an element points to null, indicating the end of the list .<br>To find a specific element you can follow the same procedure , starting with the first element , till you encounter the value being searched for .<br>To delete a node , consider the element at the second position in the above linked list , make the first elemenet point to the “next” of the second element and make the next of the second elemenet null .<br>I will leave rest of the operational logic to you, the reader and let’s focus on how skip lists are an improvement over linked lists.<br>In a linked list the average case complexity of a search operation is O(n), because, on average, you may need to traverse half of the list before finding the desired element.</p>
-<p>In a skip list the average case complexity for search is O(log n), where n is the number of elements in the skip list. This efficiency is achieved by using multiple layers that allow for skipping over a portion of the list during each step of the search. Let’s take a look at how this is achieved .</p>
+<h1 id="Skip-Lists"><a href="#Skip-Lists" class="headerlink" title="Skip Lists"></a>Skip Lists</h1><p>In a skip list the average case complexity for search is O(log n), where n is the number of elements in the skip list. This efficiency is achieved by using multiple layers that allow for skipping over a portion of the list during each step of the search. Let’s take a look at how this is achieved .</p>
 <p>The key idea behind a skip list is to use multiple layers of linked lists to create “express lanes” that allow for quicker traversal through the list.</p>
 <p>Each node in a skip list contains two main fields: a value or key and a set of forward pointers. The forward pointers points to the nodes in the same layer and represents the connection betwenn the elements in the skip list .</p>
 <p>A skip list consists of multiple layers of linked lists. The bottom layer is a regular linked list containing all the elements. Each layer above the botttom one contains a subset of elements from the layer below it .The top layer usually starts with a header node that has forward pointers to the first node in each subsequent layer.</p>
@@ -191,7 +191,7 @@
 <p>Searching in a skip list is similar to searching in a linked list. Starting from the top layer, you move forward until you find the node with the desired key or until you need to drop down to the next layer. This “skip” operation allows for faster search times compared to a simple linked list.</p>
 <p>Inserting or deleting a node in a skip list involves updating the forward pointers of the nodes affected by the operation. The randomized nature of skip lists helps maintain balance, and the structure allows for efficient modifications without requiring a complete reorganization of the list.</p>
 <p><img src="/images/skip_list.png" alt="Linked List"></p>
-<p>In this example, each layer represents a different level in the skip list. The nodes with values 6, 7, and 9 are present in multiple layers, providing faster access during search operations. The use of multiple layers helps achieve a balanced structure, resulting in efficient average-case time complexities for various operations.</p>
+<p>A search for a target element begins at the head element in the top list, and proceeds horizontally until the current element is greater than or equal to the target. If the current element is equal to the target, it has been found. If the current element is greater than the target, or the search reaches the end of the linked list, the procedure is repeated after returning to the previous element and dropping down vertically to the next lower list. </p>
 
   </div>
 </article>
@@ -219,7 +219,7 @@
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linked-Lists"><span class="toc-number">1.</span> <span class="toc-text">Linked Lists</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linked-Lists"><span class="toc-number">1.</span> <span class="toc-text">Linked Lists</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Skip-Lists"><span class="toc-number">2.</span> <span class="toc-text">Skip Lists</span></a></li></ol>
       </div>
     
 
