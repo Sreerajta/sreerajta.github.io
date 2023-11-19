@@ -14,8 +14,9 @@
 <meta property="og:description" content="In this post we will be looking into the probabilistic data structure, skip list.Assumption : The reader is already familiar with the concept of Arrays . Linked ListsBefore we dive into skip lists , l">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://sreerajta.github.io/images/linked_list.png">
+<meta property="og:image" content="http://sreerajta.github.io/images/skip_list.png">
 <meta property="article:published_time" content="2023-06-24T14:58:22.000Z">
-<meta property="article:modified_time" content="2023-11-19T17:06:40.802Z">
+<meta property="article:modified_time" content="2023-11-19T17:59:52.079Z">
 <meta property="article:author" content="Sreeraj T A">
 <meta property="article:tag" content="data structures, skip lists, interview preparation">
 <meta name="twitter:card" content="summary">
@@ -183,6 +184,13 @@
 <p>Consider the linked list :<br>List: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null</p>
 <p>To traverse through the list first you need to access the element at the first position , then by looking at the next pointer in the first element you can reach the second element and go on till the next of an element points to null, indicating the end of the list .<br>To find a specific element you can follow the same procedure , starting with the first element , till you encounter the value being searched for .<br>To delete a node , consider the element at the second position in the above linked list , make the first elemenet point to the “next” of the second element and make the next of the second elemenet null .<br>I will leave rest of the operational logic to you, the reader and let’s focus on how skip lists are an improvement over linked lists.<br>In a linked list the average case complexity of a search operation is O(n), because, on average, you may need to traverse half of the list before finding the desired element.</p>
 <p>In a skip list the average case complexity for search is O(log n), where n is the number of elements in the skip list. This efficiency is achieved by using multiple layers that allow for skipping over a portion of the list during each step of the search. Let’s take a look at how this is achieved .</p>
+<p>The key idea behind a skip list is to use multiple layers of linked lists to create “express lanes” that allow for quicker traversal through the list.</p>
+<p>Each node in a skip list contains two main fields: a value or key anda set of forward pointers. The forward pointers points to the nodes in the same layer and represents the connection betwenn the elements in the skip list .</p>
+<p>A skip list consists of multiple layers of linked lists. The bottom layer is a regular linked list containing all the elements. Each layer above the botttom one contains a subset of elements from the layer below it .The top layer usually starts with a header node that has forward pointers to the first node in each subsequent layer.</p>
+<p>Skip lists use a randomized algorithm to determine the number of layers a new element will have. This randomness helps maintain balance and ensures that the skip list remains efficient even with dynamic insertions and deletions.</p>
+<p>Searching in a skip list is similar to searching in a linked list. Starting from the top layer, you move forward until you find the node with the desired key or until you need to drop down to the next layer. This “skip” operation allows for faster search times compared to a simple linked list.</p>
+<p>Inserting or deleting a node in a skip list involves updating the forward pointers of the nodes affected by the operation. The randomized nature of skip lists helps maintain balance, and the structure allows for efficient modifications without requiring a complete reorganization of the list.</p>
+<p><img src="/images/skip_list.png" alt="Linked List"></p>
 
   </div>
 </article>
