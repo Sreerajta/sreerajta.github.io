@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://sreerajta.github.io/images/linked_list.png">
 <meta property="article:published_time" content="2023-06-24T14:58:22.000Z">
-<meta property="article:modified_time" content="2023-11-17T21:26:43.132Z">
+<meta property="article:modified_time" content="2023-11-19T03:09:16.956Z">
 <meta property="article:author" content="Sreeraj T A">
 <meta property="article:tag" content="data structures, skip lists, interview preparation">
 <meta name="twitter:card" content="summary">
@@ -166,6 +166,8 @@
 <p>Linked lists can be of several types , some examples being :</p>
 <p>Singly Linked List in which each node points to the next node.<br>Doubly Linked List in which each node has pointers to both the next and the previous nodes.<br>Circular Linked List in which the last node points back to the first node, forming a circle.</p>
 <p>When an array needs to grow ,resizing operations and picking and moving things so as to make available contigous memory locations of the new required size is an overhead , whereas a linked list can grow or shrink in runtime without the need for the same .</p>
+<p>Inserting and deleting and deleting elements are more efficient in an array , especially when the data set is large. When  an element is deleted from a large array , all subsequent elements has to be brought one location backward so that the elements occuppy contigous memory locations . whereas in a linked list you just need to make the previous element point to the next pointer of the element to be deleted . Also linked lists doesn’t require a fixed amount of contiguous memory like arrays, memory can be allocated as nodes are added . </p>
+<p>Now , with all the advantages comes several disadvantages for the linked lists . Linked lists provides no random access of elements . Elements has to be accessed sequentially .To reach a specific node, you must traverse the list from the beginning. Each element in the linked list require additional memory for the pointer , which means extra memory overhead when compared to arrays .</p>
 
   </div>
 </article>
