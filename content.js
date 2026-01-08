@@ -4,7 +4,7 @@ var SITE_CONFIG = {
     This is my personal corner of the internet where I share things I'm building, ideas I'm exploring, 
     and the occasional random thought`,
     itemsPerPage: {
-        blog: 5,
+        blog: 3,
         wall: 10
     }
 };
