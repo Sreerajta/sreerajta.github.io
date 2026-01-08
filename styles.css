@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #f5e6d3;
+    color: #000;
+    line-height: 1.6;
+}
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+header {
+    border-bottom: 2px solid #000;
+    padding: 24px 0;
+    margin-bottom: 60px;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+nav {
+    display: flex;
+    gap: 24px;
+}
+nav a {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+nav a:hover, nav a.active {
+    text-decoration: underline;
+}
+.page {
+    display: none;
+    min-height: 60vh;
+}
+.page.active {
+    display: block;
+}
+.bio {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 60px;
+    max-width: 700px;
+}
+.section-title {
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+.project {
+    border-left: 2px solid #000;
+    padding-left: 16px;
+    margin-bottom: 24px;
+}
+.project-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.project-title a {
+    color: #000;
+    text-decoration: none;
+}
+.project-title a:hover {
+    text-decoration: underline;
+}
+.project-description {
+    font-size: 14px;
+    opacity: 0.8;
+}
+.blog-post {
+    border-bottom: 2px solid #000;
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+}
+.blog-post:last-child {
+    border-bottom: none;
+}
+.post-date {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 8px;
+}
+.post-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+.post-content {
+    line-height: 1.8;
+    white-space: pre-line;
+}
+.wall-item {
+    border: 1px solid #000;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+.wall-text {
+    margin-bottom: 8px;
+}
+.wall-date {
+    font-size: 12px;
+    opacity: 0.6;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+    padding: 20px 0;
+}
+.pagination button {
+    background: transparent;
+    border: 2px solid #000;
+    padding: 8px 16px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    font-size: 14px;
+}
+.pagination button:hover:not(:disabled) {
+    background: #000;
+    color: #f5e6d3;
+}
+.pagination button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+.pagination .page-info {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+}
+footer {
+    border-top: 2px solid #000;
+    padding: 24px 0;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.6;
+}
+@media (max-width: 640px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav {
+        gap: 16px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    .bio {
+        font-size: 16px;
+    }
+}
+
