@@ -14,9 +14,9 @@ var SITE_CONFIG = {
 // ========================================
 var PROJECTS = [
     {
-        title: "TangentFlow ( currently in development )",
-        url: "https://tangentflow.com",
-        description: "A minimalistic short news app for android and ios"
+        title: "Aanabuggy ( currently in development )",
+        url: "https://aanabuggy.sreerajta.com",
+        description: "A lightweight cross platform filesharing app"
     },
     {
         title: "ThoughtCatcher",
