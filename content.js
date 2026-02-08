@@ -15,7 +15,7 @@ var SITE_CONFIG = {
 var PROJECTS = [
     {
         title: "Aanabuggy ( currently in development )",
-        url: "https://aanabuggy.sreerajta.com",
+        url: "https://aanabuggy.notsomid.com",
         description: "A lightweight cross platform filesharing app"
     },
     {
