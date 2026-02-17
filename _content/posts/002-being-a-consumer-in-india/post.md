@@ -1,7 +1,7 @@
 ---
 id: 002
 title: Being a Consumer in India Mostly Sucks
-date: 2025-02-17
+date: 2026-02-17
 ---
 
 Let's get one thing out of the way. There is a version of "being a consumer in India" that people love to celebrate — the cheap domestic help, the groceries at your door in ten minutes, the restaurant meals that cost less than a coffee abroad. That version exists on the back of deeply exploited labour and dire economic inequality. It is not something to be proud of, and it is not what this article is about.
