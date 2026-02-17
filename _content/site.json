@@ -1,0 +1,8 @@
+{
+  "name": "Sreeraj T A",
+  "bio": "I am Sreeraj T A, a generalist backend engineer working in the industry since 2018. \n    This is my personal corner of the internet where I share things I'm building, ideas I'm exploring, \n    and the occasional random thought",
+  "itemsPerPage": {
+    "blog": 3,
+    "wall": 10
+  }
+}
