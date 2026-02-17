@@ -10,9 +10,20 @@
     "file": "_content/projects.json"
   },
   "blog": {
-    "count": 2,
+    "count": 3,
     "postsDir": "_content/posts/",
     "posts": [
+      {
+        "id": "003",
+        "slug": "claude-is-my-cms",
+        "title": "Claude Is My CMS",
+        "date": "2026-02-17",
+        "type": "rich",
+        "files": {
+          "basic": "_content/posts/003-claude-is-my-cms/post.md",
+          "rich": "_content/posts/003-claude-is-my-cms/rich.html"
+        }
+      },
       {
         "id": "002",
         "slug": "being-a-consumer-in-india",

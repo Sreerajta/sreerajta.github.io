@@ -1,0 +1,463 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap');
+
+    :host {
+      --bg: #faf9f7;
+      --surface: #f0eeeb;
+      --accent: #2563eb;
+      --accent-dim: #93c5fd;
+      --text: #1a1a1a;
+      --text-muted: #525252;
+      --text-dim: #a3a3a3;
+      --green: #059669;
+      --rule: #e5e5e5;
+      --code-bg: #1e1e1e;
+      --code-text: #d4d4d4;
+      display: block;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .masthead {
+      border-bottom: 1px solid var(--rule);
+      padding: 1.5rem 0;
+      text-align: center;
+      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(37, 99, 235, 0.08);
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .byline {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    .byline span {
+      color: var(--text-muted);
+    }
+
+    article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    p {
+      margin-bottom: 1.6rem;
+      color: var(--text);
+    }
+
+    article > p:first-of-type {
+      font-size: 1.2rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+    }
+
+    article > p:first-of-type::first-letter {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 4rem;
+      font-weight: 400;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.1em;
+      margin-top: 0.1em;
+      color: var(--accent);
+    }
+
+    h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--text);
+      margin: 3.5rem 0 1.2rem;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 2.5rem 0 1rem;
+    }
+
+    .highlight {
+      background: linear-gradient(180deg, transparent 60%, var(--accent-dim) 60%);
+      padding: 0 0.1em;
+    }
+
+    .pull-quote {
+      margin: 3rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    .pull-quote p {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--text);
+      margin: 0;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .pull-quote p::first-letter {
+      font-size: inherit;
+      float: none;
+      margin: 0;
+    }
+
+    .diagram {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+
+    .diagram-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+
+    .diagram code {
+      color: var(--text-muted);
+    }
+
+    .diagram .accent {
+      color: var(--accent);
+    }
+
+    .diagram .green {
+      color: var(--green);
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .concept-card {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .concept-card h4 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .concept-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .callout {
+      background: var(--code-bg);
+      color: var(--code-text);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    .callout .comment {
+      color: #6a9955;
+    }
+
+    .callout .keyword {
+      color: #569cd6;
+    }
+
+    .callout .string {
+      color: #ce9178;
+    }
+
+    ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    li strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .section-break {
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 1.5rem;
+      letter-spacing: 0.3em;
+      margin: 3rem 0;
+    }
+
+    .closing {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    .closing p {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .closing p::first-letter {
+      font-size: inherit;
+      float: none;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      :host { font-size: 16px; }
+      .hero { padding: 3rem 1.5rem 2rem; }
+      article { padding: 2rem 1.5rem 4rem; }
+      h1 { font-size: 2rem; }
+      .concept-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<div class="masthead">
+  Building in Public &nbsp;·&nbsp; February 2026
+</div>
+
+<div class="hero">
+  <div class="tag">Experiment</div>
+  <h1>Claude <em>Is</em> My CMS</h1>
+  <p class="subtitle">
+    What happens when you design a personal website from the ground up for AI collaboration?
+    No admin panels. No databases. Just files, an agent, and conversation.
+  </p>
+  <div class="byline">Sreeraj T A <span>&nbsp;·&nbsp; A work in progress</span></div>
+</div>
+
+<article>
+
+  <p>
+    I've been thinking about what it means to build a personal website in 2026. Not the technology choices—static vs dynamic, which framework, where to host—but something more fundamental. Who is the website for, and who maintains it? The answer to the second question has always been "me, manually, through some interface." I wanted to change that.
+  </p>
+
+  <p>
+    This site you're reading runs on GitHub Pages. Static HTML, CSS, JavaScript. No server, no database, no CMS login. But it has a content management system. That system is Claude—specifically, Claude Code running in my terminal. When I want to add a blog post, I don't open an admin panel. I have a conversation.
+  </p>
+
+  <div class="pull-quote">
+    <p>The admin panel is a conversation. The database is a manifest. The build system is a script the AI wrote and can extend.</p>
+  </div>
+
+  <h2>The Shape of the System</h2>
+
+  <p>
+    The idea is simple: structure your files so an AI can understand and manipulate them efficiently. Then document that structure so each new session knows what to do. The AI isn't just editing files—it <em>is</em> the CMS.
+  </p>
+
+  <div class="diagram">
+    <div class="diagram-title">The Architecture</div>
+    <code>
+<span class="accent">CLAUDE.md</span>        → Teaches Claude how to manage this site<br>
+<span class="accent">manifest.json</span>   → Index of all content (so Claude doesn't read everything)<br>
+<span class="accent">_content/</span>       → Structured source files (Markdown, JSON)<br>
+<span class="accent">sync.js</span>         → Compiles content into what the browser needs<br>
+<span class="green">content.js</span>      → Auto-generated, served to visitors
+    </code>
+  </div>
+
+  <p>
+    The manifest is the key insight. Traditional CMSes have databases that humans query through interfaces. Here, the manifest is a database designed for AI consumption—a table of contents that tells Claude what exists without requiring it to read every file. Token efficiency as architecture.
+  </p>
+
+  <h3>What a session looks like</h3>
+
+  <p>
+    I open my terminal. I say "add a wall item about the project I shipped today." Claude reads the manifest, sees that wall items live in <code>_content/wall/wall.json</code>, reads just that file, adds the new item at the top, runs the sync script, and optionally commits and pushes. The site updates. The entire interaction takes seconds.
+  </p>
+
+  <p>
+    For something more complex—like the e-reader feature I just added—I describe what I want. Claude explores the codebase, understands the existing patterns, writes the CSS and JavaScript, creates the content structure for rich posts, updates the sync script to handle the new format, and documents everything in CLAUDE.md so future sessions know the feature exists.
+  </p>
+
+  <div class="section-break">· · ·</div>
+
+  <h2>The Self-Improving Part</h2>
+
+  <p>
+    Here's where it gets interesting. Claude doesn't just use tools—Claude builds tools for itself.
+  </p>
+
+  <p>
+    The manifest system? Claude helped design it. The sync script? Claude wrote it. The rich post format with Shadow DOM isolation? Claude built that infrastructure. Each feature becomes a tool that makes future Claude sessions more capable. The system compounds.
+  </p>
+
+  <div class="concept-grid">
+    <div class="concept-card">
+      <h4>Manifest as Index</h4>
+      <p>Claude reads one file to understand all content. No wasted tokens scanning directories.</p>
+    </div>
+    <div class="concept-card">
+      <h4>Sync as Build</h4>
+      <p>One command regenerates everything. Claude can run it, extend it, or rewrite it entirely.</p>
+    </div>
+    <div class="concept-card">
+      <h4>CLAUDE.md as Memory</h4>
+      <p>Each session starts informed. Patterns, conventions, and capabilities are documented.</p>
+    </div>
+    <div class="concept-card">
+      <h4>Rich Posts as Capability</h4>
+      <p>Magazine-style HTML with style isolation. A feature that enables future features.</p>
+    </div>
+  </div>
+
+  <p>
+    This is the part that excites me most. Traditional software requires you to anticipate needs upfront. Here, the system grows capabilities through use. Need a preview server? Ask Claude to build one. Want offline editing? Claude can create a local tool. Migration to a new host? The agent understands the entire structure—it can move itself.
+  </p>
+
+  <h2>Why This Matters</h2>
+
+  <p>
+    I'm not claiming this is the future of all websites. Most sites don't need this. But for a personal site—a space that evolves with you over years—the model is compelling.
+  </p>
+
+  <ul>
+    <li><strong>No vendor lock-in.</strong> It's just files in a git repo. GitHub Pages today, Cloudflare tomorrow, self-hosted next year. The structure travels.</li>
+    <li><strong>No maintenance burden.</strong> No plugins to update, no security patches for a CMS I barely use, no database to back up.</li>
+    <li><strong>Conversation over configuration.</strong> I describe what I want in natural language. The implementation details are handled.</li>
+    <li><strong>Compounding capability.</strong> Every feature added makes the next feature easier. The system learns (through documentation) what it can do.</li>
+  </ul>
+
+  <div class="pull-quote">
+    <p>It's not AI-assisted web development. It's infrastructure designed from scratch for AI collaboration.</p>
+  </div>
+
+  <h2>Where This Goes</h2>
+
+  <p>
+    This is version one. The seed. Some things I'm thinking about:
+  </p>
+
+  <p>
+    <strong>Local tooling.</strong> A small CLI or local server that Claude can spin up for previews, or that I can use to add content without a full conversation. The manifest format means simple tools can participate in the system.
+  </p>
+
+  <p>
+    <strong>Better indexing.</strong> As content grows, the manifest could include summaries, tags, semantic groupings. Not for readers—for Claude. Making the AI's job easier makes my life easier.
+  </p>
+
+  <p>
+    <strong>Automated workflows.</strong> Scheduled posts, content pipelines, maybe even Claude reviewing and suggesting edits to drafts. The line between "static site" and "living system" blurs.
+  </p>
+
+  <p>
+    <strong>Portable structure.</strong> The real product isn't this website. It's the pattern. A template that others could clone and have their own AI-native personal site. Fork, customize, converse.
+  </p>
+
+  <div class="section-break">· · ·</div>
+
+  <h2>The Philosophy</h2>
+
+  <p>
+    At its core, this is about alignment between how I work and how the tools work. I don't want to context-switch into "website admin mode." I don't want to remember which menu has which setting. I want to think about what I want to say or build, describe it, and have it happen.
+  </p>
+
+  <p>
+    We're entering an era where the interface to complex systems can be conversation. Not for everything—but for personal tools, creative projects, systems where I'm both the user and the maintainer? Conversation is a better interface than clicks.
+  </p>
+
+  <p>
+    The website is just files. Teach an agent how to manage those files well. Let the agent build better tools for itself. Document everything so the next session picks up where the last one left off. That's the whole thing.
+  </p>
+
+  <div class="closing">
+    <p>It's just the beginning, but it already feels like the way things should work.</p>
+  </div>
+
+</article>
