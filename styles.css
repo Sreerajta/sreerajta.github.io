@@ -149,6 +149,110 @@ footer {
     font-size: 14px;
     opacity: 0.6;
 }
+
+/* Blog post preview styles */
+.post-preview {
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+.read-more-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #000;
+}
+.read-more-btn:hover {
+    opacity: 0.7;
+}
+
+/* E-Reader Overlay */
+.reader-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f5e6d3;
+    z-index: 1000;
+    overflow-y: auto;
+}
+.reader-overlay.active {
+    display: block;
+}
+.reader-header {
+    position: sticky;
+    top: 0;
+    background: #f5e6d3;
+    border-bottom: 2px solid #000;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    z-index: 1001;
+}
+.reader-back-btn {
+    background: transparent;
+    border: none;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 0;
+}
+.reader-back-btn:hover {
+    text-decoration: underline;
+}
+.reader-title {
+    font-size: 16px;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.reader-theme-toggle {
+    background: transparent;
+    border: 2px solid #000;
+    padding: 6px 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    cursor: pointer;
+}
+.reader-theme-toggle:hover {
+    background: #000;
+    color: #f5e6d3;
+}
+.reader-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+.reader-content.basic-theme {
+    font-family: 'Courier New', monospace;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+.reader-content.basic-theme h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+.reader-content.basic-theme .reader-date {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 32px;
+}
+.reader-rich-container {
+    width: 100%;
+}
+
 @media (max-width: 640px) {
     header .container {
         flex-direction: column;
@@ -163,5 +267,16 @@ footer {
     .bio {
         font-size: 16px;
     }
+    .reader-header {
+        padding: 12px 16px;
+    }
+    .reader-title {
+        font-size: 14px;
+        order: 3;
+        flex-basis: 100%;
+        text-align: left;
+    }
+    .reader-content {
+        padding: 24px 16px 60px;
+    }
 }
-

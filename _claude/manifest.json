@@ -10,9 +10,20 @@
     "file": "_content/projects.json"
   },
   "blog": {
-    "count": 1,
+    "count": 2,
     "postsDir": "_content/posts/",
     "posts": [
+      {
+        "id": "002",
+        "slug": "being-a-consumer-in-india",
+        "title": "Being a Consumer in India Mostly Sucks",
+        "date": "2026-02-17",
+        "type": "rich",
+        "files": {
+          "basic": "_content/posts/002-being-a-consumer-in-india/post.md",
+          "rich": "_content/posts/002-being-a-consumer-in-india/rich.html"
+        }
+      },
       {
         "id": "001",
         "slug": "first-post",
@@ -27,7 +38,8 @@
     "file": "_content/wall/wall.json"
   },
   "instructions": {
-    "addBlogPost": "1. Create new .md file in _content/posts/ with format: {id}-{slug}.md, 2. Add entry to manifest.json blog.posts array (at TOP), 3. Run: node _claude/sync.js",
+    "addBlogPost": "1. Create new .md file in _content/posts/ with format: {id}-{slug}.md (or directory for rich posts), 2. Add entry to manifest.json blog.posts array (at TOP), 3. Run: node _claude/sync.js",
+    "addRichPost": "1. Create directory _content/posts/{id}-{slug}/ with post.md and rich.html, 2. Add entry to manifest with type: 'rich' and files object, 3. Run: node _claude/sync.js",
     "addWallItem": "1. Edit _content/wall/wall.json, add item at TOP of array, 2. Run: node _claude/sync.js",
     "editProject": "1. Edit _content/projects.json, 2. Run: node _claude/sync.js",
     "afterAnyChange": "Run: node _claude/sync.js to regenerate content.js"

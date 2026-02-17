@@ -15,6 +15,8 @@ const CONTENT_DIR = path.join(ROOT, '_content');
 const MANIFEST_PATH = path.join(ROOT, '_claude', 'manifest.json');
 const OUTPUT_PATH = path.join(ROOT, 'content.js');
 
+const PREVIEW_LENGTH = 300;
+
 // Read and parse JSON file
 function readJSON(filePath) {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -44,6 +46,17 @@ function parseMarkdown(filePath) {
     return { ...frontmatter, content: body };
 }
 
+// Generate preview text from content
+function generatePreview(text, maxLength) {
+    if (text.length <= maxLength) return text;
+    let truncated = text.substring(0, maxLength);
+    const lastSpace = truncated.lastIndexOf(' ');
+    if (lastSpace > maxLength - 50) {
+        truncated = truncated.substring(0, lastSpace);
+    }
+    return truncated + '...';
+}
+
 // Escape string for JavaScript
 function escapeJS(str) {
     return str
@@ -51,6 +64,7 @@ function escapeJS(str) {
         .replace(/`/g, '\\`')
         .replace(/\$/g, '\\$');
 }
+
 
 function sync() {
     console.log('🔄 Syncing content...\n');
@@ -68,12 +82,34 @@ function sync() {
 
     // Load blog posts from individual files
     const blogPosts = manifest.blog.posts.map(postMeta => {
-        const postData = parseMarkdown(path.join(ROOT, postMeta.file));
-        return {
+        let postData;
+        let richFile = null;
+
+        // Check if this is a rich post (type: "rich" in manifest)
+        if (postMeta.type === 'rich' && postMeta.files) {
+            // Rich post with separate files
+            const basicPath = path.join(ROOT, postMeta.files.basic);
+            postData = parseMarkdown(basicPath);
+            richFile = postMeta.files.rich;
+            console.log(`  - Rich post: ${postMeta.title}`);
+        } else {
+            // Simple post
+            postData = parseMarkdown(path.join(ROOT, postMeta.file));
+        }
+
+        const result = {
+            id: postMeta.id,
             date: postData.date,
             title: postData.title,
-            content: postData.content
+            content: postData.content,
+            preview: generatePreview(postData.content, PREVIEW_LENGTH)
         };
+
+        if (richFile) {
+            result.richFile = richFile;
+        }
+
+        return result;
     });
     console.log(`✓ ${blogPosts.length} blog posts loaded`);
 
