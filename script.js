@@ -102,6 +102,31 @@ function changeWallPage(newPage) {
     renderWallPage(newPage);
 }
 
+// Navigation
+function navigateTo(pageId) {
+    if (pageId === 'home') {
+        window.location.hash = '';
+    } else {
+        window.location.hash = '/' + pageId;
+    }
+}
+
+function showPage(pageId) {
+    var navLinks = document.querySelectorAll('.nav-link');
+    var pages = document.querySelectorAll('.page');
+
+    navLinks.forEach(function(l) { l.classList.remove('active'); });
+    pages.forEach(function(p) { p.classList.remove('active'); });
+
+    var activeLink = document.querySelector('.nav-link[data-page="' + pageId + '"]');
+    if (activeLink) activeLink.classList.add('active');
+
+    var activePage = document.getElementById(pageId);
+    if (activePage) activePage.classList.add('active');
+
+    currentPage = pageId;
+}
+
 // E-Reader Functions
 function createReaderOverlay() {
     if (readerOverlay) return;
@@ -132,7 +157,7 @@ function openReader(postId) {
 }
 
 function closeReader() {
-    window.location.hash = '';
+    window.location.hash = '/blog';
 }
 
 function showReader(postId) {
@@ -236,13 +261,30 @@ function renderRichContent(post, contentDiv) {
 
 function handleHashChange() {
     var hash = window.location.hash;
-    var match = hash.match(/^#\/post\/(.+)$/);
 
-    if (match) {
-        showReader(match[1]);
-    } else {
-        hideReader();
+    // Check for post reader
+    var postMatch = hash.match(/^#\/post\/(.+)$/);
+    if (postMatch) {
+        showPage('blog');
+        showReader(postMatch[1]);
+        return;
     }
+
+    // Hide reader if open
+    hideReader();
+
+    // Check for page navigation
+    var pageMatch = hash.match(/^#\/(\w+)$/);
+    if (pageMatch) {
+        var pageId = pageMatch[1];
+        if (['home', 'blog', 'wall'].indexOf(pageId) !== -1) {
+            showPage(pageId);
+            return;
+        }
+    }
+
+    // Default to home
+    showPage('home');
 }
 
 function initSite() {
@@ -254,22 +296,17 @@ function initSite() {
     renderBlogPage(1);
     renderWallPage(1);
 
+    // Set up nav link click handlers
     var navLinks = document.querySelectorAll('.nav-link');
-    var pages = document.querySelectorAll('.page');
-
     navLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            navLinks.forEach(function(l) { l.classList.remove('active'); });
-            pages.forEach(function(p) { p.classList.remove('active'); });
-            link.classList.add('active');
             var pageId = link.getAttribute('data-page');
-            document.getElementById(pageId).classList.add('active');
-            currentPage = pageId;
+            navigateTo(pageId);
         });
     });
 
-    // Handle hash-based routing for reader
+    // Handle hash-based routing
     window.addEventListener('hashchange', handleHashChange);
 
     // Check initial hash
